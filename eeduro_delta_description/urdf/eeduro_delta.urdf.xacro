@@ -40,98 +40,7 @@
 		<xacro:base_inertial/>
 	</link>
 
-
-	<xacro:delta_arm 
-		parent="base_link" 
-		arm_end_child="tool" 
-		arm_nr="1" 
-		joint4_type="urdf"
-		angle1="${angle1_init}"
-		angle2="${angle2_init}"
-		angle3="${angle3_init}"
-		dist_xy="${dist_origin2arm_xy_plane}"
-		x="0"		y="0"		z="${dist_origin2arm_z}"
-		roll="0"		pitch="0"		yaw="${-pi/2}"
-	/>
-
-	<xacro:delta_arm
-    parent="base_link"
-    arm_end_child="tool"
-    arm_nr="2"
-    joint4_type="sdf"
-		angle1="${angle1_init}"
-		angle2="${angle2_init}"
-		angle3="${angle3_init}"
-    dist_xy="${dist_origin2arm_xy_plane}"
-    x="0"   y="0"   z="${dist_origin2arm_z}"
-    roll="0"    pitch="0"   yaw="${pi/6}"
-  />
-
-	<xacro:delta_arm
-    parent="base_link"
-    arm_end_child="tool"
-    arm_nr="3"
-    joint4_type="sdf"
-		angle1="${angle1_init}"
-		angle2="${angle2_init}"
-		angle3="${angle3_init}"
-    dist_xy="${dist_origin2arm_xy_plane}"
-    x="0"   y="0"   z="${dist_origin2arm_z}"
-    roll="0"    pitch="0"   yaw="${5*pi/6}"
-  />
-
-
-
-	<link name="tool">
-	  <visual>
-	    <origin xyz="0 0 0" rpy="0 0 0"/>
-	    <geometry>
-	      <mesh filename="package://eeduro_delta_description/meshes/tool_scaled.dae"/>
-	    </geometry>
-	  </visual>
-	  <collision>
-	    <origin xyz="0 0 0.023" rpy="${pi/2} 0 0"/>
-	    <geometry>
-	      <cylinder radius="0.007" length="0.051"/>
-	    </geometry>
-	  </collision>
-		<xacro:tool_inertial/>
-	</link>
-
-
-	<gazebo reference="base_link">
-	  <selfCollide>true</selfCollide>
-	</gazebo>
-
-	<gazebo reference="arm1_link1">
-	  <selfCollide>true</selfCollide>
-	</gazebo>
-
-	<gazebo reference="arm2_link1">
-	  <selfCollide>true</selfCollide>
-	</gazebo>
-
-	<gazebo reference="arm3_link1">
-	  <selfCollide>true</selfCollide>
-	</gazebo>
-
-	<gazebo reference="arm1_link2">
-	  <selfCollide>true</selfCollide>
-	</gazebo>
-
-	<gazebo reference="arm2_link2">
-	  <selfCollide>true</selfCollide>
-	</gazebo>
-
-	<gazebo reference="arm3_link2">
-	  <selfCollide>true</selfCollide>
-	</gazebo>
-
-	<gazebo reference="tool">
-	  <selfCollide>true</selfCollide>
-	</gazebo>
-
-	<!-- x y z are the center of the robot, in the high:of the mounting-points for the arms -->
+    	<!-- x y z are the center of the robot, in the high:of the mounting-points for the arms -->
 	<xacro:macro name="delta_arm" params="parent arm_end_child arm_nr joint4_type angle1 angle2 angle3 dist_xy x y z roll pitch yaw">
 		<joint name="arm${arm_nr}_motor_joint" type="continuous">
 		  <parent link="${parent}"/>
@@ -232,6 +141,98 @@
 
 		<xacro:element xacro:name="joint4_${joint4_type}" arm_nr="${arm_nr}" child="${arm_end_child}" angle="${angle3}"/>
 	</xacro:macro>
+
+
+
+	<xacro:delta_arm 
+		parent="base_link" 
+		arm_end_child="tool" 
+		arm_nr="1" 
+		joint4_type="urdf"
+		angle1="${angle1_init}"
+		angle2="${angle2_init}"
+		angle3="${angle3_init}"
+		dist_xy="${dist_origin2arm_xy_plane}"
+		x="0"		y="0"		z="${dist_origin2arm_z}"
+		roll="0"		pitch="0"		yaw="${-pi/2}"
+	/>
+
+	<xacro:delta_arm
+    parent="base_link"
+    arm_end_child="tool"
+    arm_nr="2"
+    joint4_type="sdf"
+		angle1="${angle1_init}"
+		angle2="${angle2_init}"
+		angle3="${angle3_init}"
+    dist_xy="${dist_origin2arm_xy_plane}"
+    x="0"   y="0"   z="${dist_origin2arm_z}"
+    roll="0"    pitch="0"   yaw="${pi/6}"
+  />
+
+	<xacro:delta_arm
+    parent="base_link"
+    arm_end_child="tool"
+    arm_nr="3"
+    joint4_type="sdf"
+		angle1="${angle1_init}"
+		angle2="${angle2_init}"
+		angle3="${angle3_init}"
+    dist_xy="${dist_origin2arm_xy_plane}"
+    x="0"   y="0"   z="${dist_origin2arm_z}"
+    roll="0"    pitch="0"   yaw="${5*pi/6}"
+  />
+
+
+
+	<link name="tool">
+	  <visual>
+	    <origin xyz="0 0 0" rpy="0 0 0"/>
+	    <geometry>
+	      <mesh filename="package://eeduro_delta_description/meshes/tool_scaled.dae"/>
+	    </geometry>
+	  </visual>
+	  <collision>
+	    <origin xyz="0 0 0.023" rpy="${pi/2} 0 0"/>
+	    <geometry>
+	      <cylinder radius="0.007" length="0.051"/>
+	    </geometry>
+	  </collision>
+		<xacro:tool_inertial/>
+	</link>
+
+
+	<gazebo reference="base_link">
+	  <selfCollide>true</selfCollide>
+	</gazebo>
+
+	<gazebo reference="arm1_link1">
+	  <selfCollide>true</selfCollide>
+	</gazebo>
+
+	<gazebo reference="arm2_link1">
+	  <selfCollide>true</selfCollide>
+	</gazebo>
+
+	<gazebo reference="arm3_link1">
+	  <selfCollide>true</selfCollide>
+	</gazebo>
+
+	<gazebo reference="arm1_link2">
+	  <selfCollide>true</selfCollide>
+	</gazebo>
+
+	<gazebo reference="arm2_link2">
+	  <selfCollide>true</selfCollide>
+	</gazebo>
+
+	<gazebo reference="arm3_link2">
+	  <selfCollide>true</selfCollide>
+	</gazebo>
+
+	<gazebo reference="tool">
+	  <selfCollide>true</selfCollide>
+	</gazebo>
 
 	<xacro:macro name="link3_with_joint" params="arm_nr suffix sign joint3_type">
 		<joint name="arm${arm_nr}_joint2${suffix}" type="continuous">
