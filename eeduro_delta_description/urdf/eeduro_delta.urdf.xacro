@@ -230,8 +230,6 @@
 		</gazebo>
   </xacro:macro>
 
-
-
 	<xacro:delta_arm 
 		parent="base_link" 
 		arm_end_child="tool" 
