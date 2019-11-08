@@ -1,5 +1,5 @@
 <launch>
-  <param name="robot_description" command="xacro '$(find eeduro_delta_description)/urdf/eeduro_delta.urdf.xacro'"/>
+  <param name="robot_description" command="$(find xacro)/xacro.py '$(find eeduro_delta_description)/urdf/eeduro_delta.urdf.xacro'"/>
   <arg name="jsp_use_gui" default="false"/>
 
 	<node name="eeduro_delta_joint_state_publisher" pkg="eeduro_delta_joint_state_publisher" type="eeduro_delta_joint_state_publisher_node" output="screen"/>
